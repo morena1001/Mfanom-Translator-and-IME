@@ -34,14 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String test = "";
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       maxLines: 10,
                       onChanged: (text) {
                         setState(() {
-                          test = text;
+                          _controller.text = text;
                         }); 
                       },
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),//, borderSide: const BorderSide(color: Color(0x88e1dbcb))),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                         hintText: 'Enter Text',
                         hintStyle: const TextStyle(color: Color(0x88000000)),
                       ),
@@ -103,59 +96,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: 
                     TextField(
                       maxLines: 10,
-                      onChanged: (text) {
-                        setState(() {
-                          test = text;
-                        }); 
-                      },
-                      enabled: false,
-                      // enabl
+                      controller: _controller,
+                      readOnly: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                        hintText: test,
-                        hintStyle: const TextStyle(color: Color(0xFF000000), fontSize:17),
+                        hintText: 'Translation',
                       ),
                     ),
                 ),
-
-                // SizedBox(
-                //   height: 275,
-                //   width: 300,
-                //   child: 
-                //     Container (
-                //       decoration: BoxDecoration(
-                //         border: Border.all(),
-                //         borderRadius: BorderRadius.circular(10),
-                //       ),
-                //       child: 
-                //         Text(
-                //           test,
-                //           style: const TextStyle(color: Color(0xFF000000)),
-                //         ),
-                //     )
-                    
-                    // TextField(
-                    //   maxLines: 10,
-                    //   controller: inputTextEditingController,
-                    //   decoration: const InputDecoration(
-                    //     border: OutlineInputBorder(),
-                    //     hintText: 'Enter Text',
-                    //     hintStyle: TextStyle(color: Color(0xFF000000)),
-                    //   ),
-                    // ),
-                // ),
-
-                // const Padding(  padding: EdgeInsets.only(top:20)),
-
-                // const Text(
-                // 'You have pushed the button this many times:',
-                // style: TextStyle(color: Color(0xFF000000)),
-                // ),
-
-                // Text(
-                //   '$_counter',
-                //   style: const TextStyle(color: Color(0xFF000000), fontSize: 28)
-                // ),
               ],
             ),
 
@@ -163,12 +111,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFFFFFFFF),
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: const Color(0xFFFFFFFF),
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
