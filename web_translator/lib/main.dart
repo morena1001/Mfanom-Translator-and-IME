@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mfanom Translator',
       theme: ThemeData(
-       // useMaterial3: true,
-        disabledColor: const Color(0xFF000000)
+        useMaterial3: false,
+        disabledColor: const Color(0xFF000000),
       ),
       home: const MyHomePage(title: 'Flutter Home Page'),
     );
@@ -67,7 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           _controller.text = text;
                         }); 
                       },
+                      cursorColor: const Color(0xFF000000),
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Color(0x66000000)), borderRadius: BorderRadius.circular(10)),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                         hintText: 'Enter Text',
                         hintStyle: const TextStyle(color: Color(0x88000000)),
@@ -99,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       controller: _controller,
                       readOnly: true,
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Color(0x66000000)), borderRadius: BorderRadius.circular(10)),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                         hintText: 'Translation',
                       ),
